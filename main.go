@@ -61,10 +61,10 @@ func run(c *cli.Context) error {
 	for _ = range daily(c.Int("hour")) {
 		events, err := m.FetchEvents()
 		if err != nil {
-			log.Println("Error fetching meetup.com events: %s", err.Error())
+			log.Printf("Error fetching meetup.com events: %s\n", err.Error())
 		}
 
-		log.Println("Fetched %d events", len(events))
+		log.Printf("Fetched %d events\n", len(events))
 
 		for _, event := range events {
 			if isInDays(event, c.Int("days-before-reminder")) {
@@ -73,7 +73,7 @@ func run(c *cli.Context) error {
 		}
 
 		if err != nil {
-			log.Println("Error posting to slack: %s", err.Error())
+			log.Printf("Error posting to slack: %s\n", err.Error())
 		}
 	}
 
