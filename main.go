@@ -14,7 +14,7 @@ import (
 
 func main() {
 	app := cli.NewApp()
-	app.Version = "0.2.0"
+	app.Version = "0.2.1"
 	app.Usage = "meetup.com event reminder"
 
 	app.Flags = []cli.Flag{
