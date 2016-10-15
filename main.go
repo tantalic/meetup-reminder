@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"time"
 
@@ -38,6 +39,12 @@ func main() {
 			EnvVar: "MESSAGE",
 			Usage:  "custom message text for reminder",
 		},
+		cli.IntFlag{
+			Name:   "hour",
+			EnvVar: "HOUR",
+			Usage:  "the hour to run the reminder",
+			Value:  11,
+		},
 	}
 
 	app.Action = run
@@ -45,27 +52,65 @@ func main() {
 }
 
 func run(c *cli.Context) error {
+	log.Println("Starting up")
+
 	m := meetup.Client{
 		GroupURLName: c.String("meetup"),
 	}
-	events, err := m.FetchEvents()
-	if err != nil {
-		fmt.Println("Error fetching meetup.com events: %s", err.Error())
-		return err
-	}
 
-	for _, event := range events {
-		if isInDays(event, c.Int("days-before-reminder")) {
-			notify(event, c)
+	for _ = range daily(c.Int("hour")) {
+		events, err := m.FetchEvents()
+		if err != nil {
+			log.Println("Error fetching meetup.com events: %s", err.Error())
+		}
+
+		log.Println("Fetched %d events", len(events))
+
+		for _, event := range events {
+			if isInDays(event, c.Int("days-before-reminder")) {
+				notify(event, c)
+			}
+		}
+
+		if err != nil {
+			log.Println("Error posting to slack: %s", err.Error())
 		}
 	}
 
-	if err != nil {
-		fmt.Println("Error posting to slack: %s", err.Error())
-		return err
+	return nil
+}
+
+func daily(hour int) <-chan time.Time {
+	out := make(chan time.Time)
+
+	go func() {
+		nextTick := nextHour(hour)
+		durationUntil := nextTick.Sub(time.Now())
+
+		firstTick := <-time.After(durationUntil)
+		out <- firstTick
+
+		ticker := time.Tick(time.Hour * 24)
+		for tick := range ticker {
+			out <- tick
+		}
+
+	}()
+
+	return out
+}
+
+func nextHour(hour int) time.Time {
+	now := time.Now()
+	currentHour := now.Hour()
+	day := now.Day()
+
+	// If the hour has already passsed today, tomorrow is the next hour
+	if currentHour > hour {
+		day = day + 1
 	}
 
-	return nil
+	return time.Date(now.Year(), now.Month(), now.Day(), hour, 0, 0, 0, now.Location())
 }
 
 func isInDays(event meetup.Event, days int) bool {
