@@ -106,7 +106,7 @@ func nextHour(hour int) time.Time {
 	day := now.Day()
 
 	// If the hour has already passsed today, tomorrow is the next hour
-	if currentHour > hour {
+	if currentHour >= hour {
 		day = day + 1
 	}
 
