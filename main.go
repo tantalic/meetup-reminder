@@ -87,6 +87,7 @@ func daily(hour int) <-chan time.Time {
 		nextTick := nextHour(hour)
 		durationUntil := nextTick.Sub(time.Now())
 
+		log.Printf("Waiting %v until first check\n", durationUntil)
 		firstTick := <-time.After(durationUntil)
 		out <- firstTick
 
