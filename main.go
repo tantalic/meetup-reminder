@@ -110,7 +110,7 @@ func nextHour(hour int) time.Time {
 		day = day + 1
 	}
 
-	return time.Date(now.Year(), now.Month(), now.Day(), hour, 0, 0, 0, now.Location())
+	return time.Date(now.Year(), now.Month(), day, hour, 0, 0, 0, now.Location())
 }
 
 func isInDays(event meetup.Event, days int) bool {
