@@ -10,7 +10,7 @@ spec:
         app: weekly-event-reminder
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.2
+        - image: tantalic/meetup-reminder:0.2.3
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
@@ -39,7 +39,7 @@ spec:
         app: fortnightly-event-reminder
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.2
+        - image: tantalic/meetup-reminder:0.2.3
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
@@ -68,7 +68,7 @@ spec:
         app: day-of-event-reminder
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.2
+        - image: tantalic/meetup-reminder:0.2.3
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
