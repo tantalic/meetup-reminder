@@ -74,7 +74,7 @@ spec:
             - name: MEETUP_NAME
               value: bellinghamcodes
             - name: HOUR
-              value: "18"
+              value: "16"
             - name: DAYS_BEFORE_REMINDER
               value: "0"
             - name: MESSAGE
