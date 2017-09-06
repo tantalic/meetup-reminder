@@ -85,3 +85,90 @@ spec:
                   name: slack-reminder
                   key: webhookUrl
 ---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: weekly-event-reminder-toolhouse
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: weekly-event-reminder-toolhouse
+    spec:
+      containers:
+        - image: tantalic/meetup-reminder:0.2.4
+          name: meetup-reminder
+          env:
+            - name: MEETUP_NAME
+              value: bellinghamcodes
+            - name: HOUR
+              value: "18"
+            - name: DAYS_BEFORE_REMINDER
+              value: "7"
+            - name: MESSAGE
+              value: "is in one week"
+            - name: SLACK_WEBHOOK
+              valueFrom:
+                secretKeyRef:
+                  name: slack-reminder
+                  key: toolhouseWebhookUrl
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fortnightly-event-reminder-toolhouse
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: fortnightly-event-reminder-toolhouse
+    spec:
+      containers:
+        - image: tantalic/meetup-reminder:0.2.4
+          name: meetup-reminder
+          env:
+            - name: MEETUP_NAME
+              value: bellinghamcodes
+            - name: HOUR
+              value: "18"
+            - name: DAYS_BEFORE_REMINDER
+              value: "14"
+            - name: MESSAGE
+              value: "is in two weeks"
+            - name: SLACK_WEBHOOK
+              valueFrom:
+                secretKeyRef:
+                  name: slack-reminder
+                  key: toolhouseWebhookUrl
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: day-of-event-reminder-toolhouse
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: day-of-event-reminder-toolhouse
+    spec:
+      containers:
+        - image: tantalic/meetup-reminder:0.2.4
+          name: meetup-reminder
+          env:
+            - name: MEETUP_NAME
+              value: bellinghamcodes
+            - name: HOUR
+              value: "18"
+            - name: DAYS_BEFORE_REMINDER
+              value: "0"
+            - name: MESSAGE
+              value: "is TODAY"
+            - name: SLACK_WEBHOOK
+              valueFrom:
+                secretKeyRef:
+                  name: slack-reminder
+                  key: toolhouseWebhookUrl
+---
