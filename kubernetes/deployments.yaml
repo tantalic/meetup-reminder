@@ -188,7 +188,7 @@ spec:
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
-              value: bellinghamcodes
+              value: Girl-Develop-It-Bellingham
             - name: HOUR
               value: "18"
             - name: DAYS_BEFORE_REMINDER
@@ -199,7 +199,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: slack-reminder
-                  key: webhookUrl
+                  key: gdiWebhookUrl
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -217,7 +217,7 @@ spec:
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
-              value: bellinghamcodes
+              value: Girl-Develop-It-Bellingham
             - name: HOUR
               value: "18"
             - name: DAYS_BEFORE_REMINDER
@@ -228,7 +228,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: slack-reminder
-                  key: webhookUrl
+                  key: gdiWebhookUrl
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -246,7 +246,7 @@ spec:
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
-              value: bellinghamcodes
+              value: Girl-Develop-It-Bellingham
             - name: HOUR
               value: "16"
             - name: DAYS_BEFORE_REMINDER
@@ -257,5 +257,5 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: slack-reminder
-                  key: webhookUrl
+                  key: gdiWebhookUrl
 ---
