@@ -136,7 +136,7 @@ func notify(event meetup.Event, c *cli.Context) error {
 	location := fmt.Sprintf("%s\n%s", event.Venue.Name, event.Venue.AddressLine1)
 
 	return webhook.Post(slack.Message{
-		Text: fmt.Sprintf("<!channel> *Reminder: %s %s* :loudspeaker: ", event.Name, message),
+		Text: fmt.Sprintf("*Reminder: %s %s* :loudspeaker: ", event.Name, message),
 		Attachments: []slack.Attachment{
 			slack.Attachment{
 				Fallback: date,
