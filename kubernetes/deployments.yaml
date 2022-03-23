@@ -10,7 +10,7 @@ spec:
         app: weekly-event-reminder
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.4
+        - image: tantalic/meetup-reminder:0.3.0
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
@@ -39,7 +39,7 @@ spec:
         app: fortnightly-event-reminder
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.4
+        - image: tantalic/meetup-reminder:0.3.0
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
@@ -68,7 +68,7 @@ spec:
         app: day-of-event-reminder
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.4
+        - image: tantalic/meetup-reminder:0.3.0
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
@@ -97,7 +97,7 @@ spec:
         app: weekly-event-reminder-toolhouse
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.4
+        - image: tantalic/meetup-reminder:0.3.0
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
@@ -126,7 +126,7 @@ spec:
         app: fortnightly-event-reminder-toolhouse
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.4
+        - image: tantalic/meetup-reminder:0.3.0
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
@@ -155,7 +155,7 @@ spec:
         app: day-of-event-reminder-toolhouse
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.4
+        - image: tantalic/meetup-reminder:0.3.0
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
@@ -184,7 +184,7 @@ spec:
         app: weekly-event-reminder-gdi
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.4
+        - image: tantalic/meetup-reminder:0.3.0
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
@@ -213,7 +213,7 @@ spec:
         app: fortnightly-event-reminder-gdi
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.4
+        - image: tantalic/meetup-reminder:0.3.0
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
@@ -242,7 +242,7 @@ spec:
         app: day-of-event-reminder-gdi
     spec:
       containers:
-        - image: tantalic/meetup-reminder:0.2.4
+        - image: tantalic/meetup-reminder:0.3.0
           name: meetup-reminder
           env:
             - name: MEETUP_NAME
