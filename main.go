@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 
 	"tantalic.com/meetup-reminder/internal/meetup"
 	"tantalic.com/meetup-reminder/internal/slack"
