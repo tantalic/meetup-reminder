@@ -11,4 +11,4 @@ docker: linux
 	docker build -t tantalic/meetup-reminder:latest .
 
 update-ca:
-	curl --time-cond certs/ca-certificates.crt -o certs/ca-certificates.crt https://curl.haxx.se/ca/cacert.pem 
+	curl --time-cond certs/ca-certificates.crt -o certs/ca-certificates.crt https://curl.se/ca/cacert.pem 
