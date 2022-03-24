@@ -1,0 +1,6 @@
+.dockerignore
+.gitignore
+kubernetes/
+Makefile
+meetup-reminder
+README.md

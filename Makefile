@@ -1,14 +1,8 @@
 build:
-	go build -o build/meetup-reminder
+	go build .
 
 run:
-	go run *.go
+	go run .
 
-linux: 
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -tags netgo -ldflags '-w' -o build/meetup-reminder-linux-amd64
-
-docker: linux
-	docker build -t tantalic/meetup-reminder:latest .
-
-update-ca:
-	curl --time-cond certs/ca-certificates.crt -o certs/ca-certificates.crt https://curl.se/ca/cacert.pem 
+docker:
+	docker buildx build -t tantalic/meetup-reminder:latest --platform=linux/amd64,linux/arm64 --push .
